@@ -1,0 +1,7 @@
+{
+  "name": "angular_complaint_admin_app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
