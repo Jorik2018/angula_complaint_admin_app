@@ -18,7 +18,7 @@ export class IsAdmin implements CanActivate {
 		let urlParams = new URLSearchParams(location.search);
 		const code = urlParams.get('code');
 		if(code){
-			let data:any=await me.http.post(environment.APP_BASE_URL+'/api/auth/token', code).toPromise();//;.subscribe((data) => {
+			let data:any=await me.http.post(environment.APP_BASE_URL+'/api/denuncia/api/token', code).toPromise();//;.subscribe((data) => {
 		   console.log(data);
 		  
 		   if (data.error) {

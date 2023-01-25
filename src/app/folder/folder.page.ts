@@ -5,6 +5,7 @@ import { ColumnMode ,SelectionType } from '@swimlane/ngx-datatable';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { LoadingController } from '@ionic/angular';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-folder',
@@ -46,7 +47,7 @@ export class FolderPage implements OnInit {
 			'Content-Type': 'application/json',
 			'Authorization': 'Bearer ' + me.token
 		});
-		this.http.get<any>('../../assets/movies.json',{ headers: reqHeader }).subscribe((res) => {
+		this.http.get<any>(environment.APP_BASE_URL+'/api/denuncia/api/denuncia',{ headers: reqHeader }).subscribe((res) => {
 			console.log(res);
 			this.rows = res.data;
 		});
@@ -70,7 +71,7 @@ export class FolderPage implements OnInit {
 			'Content-Type': 'application/json',
 			'Authorization': 'Bearer ' + me.token
 		});
-		me.http.post<any>('http://localhost:8100/folder/Favorites', me.o, { headers: reqHeader }).subscribe(data => {
+		me.http.post<any>(environment.APP_BASE_URL+'/api/denuncia/api/updateDenuncia', me.o, { headers: reqHeader }).subscribe(data => {
 			loading.dismiss();
 			me.isModalOpen=false;
 			me.retrieve();

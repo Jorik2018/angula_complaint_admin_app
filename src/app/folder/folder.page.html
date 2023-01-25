@@ -42,9 +42,10 @@
 			(activate)="onActivate($event)"
 			(select)="onSelect($event)"
 			>
-			<ngx-datatable-column name="Id" [width]="80"></ngx-datatable-column>
-			<ngx-datatable-column name="descripcion" [width]="300"></ngx-datatable-column>
-			<ngx-datatable-column name="created_at" [width]="300" prop="created_at"></ngx-datatable-column>
+			<ngx-datatable-column name="Id" [ngStyle]="{textAlign:'center'}" [width]="60"></ngx-datatable-column>
+			<ngx-datatable-column name="Denunciado" prop="apenombresdenunciado" [width]="200"></ngx-datatable-column>
+			<ngx-datatable-column name="Descripcion" [width]="300"></ngx-datatable-column>
+			<ngx-datatable-column name="Fecha Registro" [width]="300" prop="created_at"></ngx-datatable-column>
 		</ngx-datatable>
 	</div>
 	<ion-modal [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
@@ -55,9 +56,18 @@
 				</ion-toolbar>
 			</ion-header>
 			<ion-content class="ion-padding">
+			
+				<ion-item>
+					<ion-label position="stacked">Denunciado:</ion-label>
+					<ion-text color="primary">{{o.apenombresdenunciado}}</ion-text>
+				</ion-item>
 				<ion-item>
 					<ion-label position="stacked">Descripción:</ion-label>
 					<ion-text color="primary">{{o.descripcion}}</ion-text>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Fecha Registro:</ion-label>
+					<ion-text color="primary">{{o.created_at}}</ion-text>
 				</ion-item>
 				<ion-item>
 					<ion-label position="stacked">Respuesta:{{o.respuesta}}</ion-label>
