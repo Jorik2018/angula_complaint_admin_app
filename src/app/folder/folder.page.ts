@@ -71,7 +71,7 @@ export class FolderPage implements OnInit {
 			'Content-Type': 'application/json',
 			'Authorization': 'Bearer ' + me.token
 		});
-		me.http.post<any>(environment.APP_BASE_URL+'/api/denuncia/api/updateDenuncia', me.o, { headers: reqHeader }).subscribe(data => {
+		me.http.put<any>(environment.APP_BASE_URL+'/api/denuncia/api/updateDenuncia', me.o, { headers: reqHeader }).subscribe(data => {
 			loading.dismiss();
 			me.isModalOpen=false;
 			me.retrieve();
