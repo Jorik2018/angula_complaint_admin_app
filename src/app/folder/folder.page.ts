@@ -76,12 +76,7 @@ export class FolderPage implements OnInit {
 			me.isModalOpen=false;
 			me.retrieve();
 		},(error)=>{
-			console.log(error);
-			setTimeout(()=>{
-				loading.dismiss();
-				me.isModalOpen=false;
-				me.retrieve();
-			},2000);
+			loading.dismiss();
 		})
 	}
 
