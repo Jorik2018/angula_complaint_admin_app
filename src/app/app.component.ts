@@ -5,14 +5,30 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
-  ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+	
+	public appPages = [
+		{ title: 'Denuncias', url: '/folder/Inbox', icon: 'mail' },
+	];
+
+	userName:string='';
+
+	public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+
+	constructor() {
+		
+			/*	try{
+			let token_:any=JSON.parse(localStorage.getItem('token') as string);
+			me.token=(token_ as any)!.token as string;
+		}catch(e){}*/
+	}
+
+	async logout(){
+		let location = new URL(window.location.toString()),urlParams = new URLSearchParams(location.search);
+		urlParams.delete('code');
+		let q = urlParams.toString();
+		q = q && ('?' + q);
+		await localStorage.removeItem('token');
+		window.location.replace(location.protocol + '//' + location.host + location.pathname + q);
+	}
+  
 }
