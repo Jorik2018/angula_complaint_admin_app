@@ -70,8 +70,12 @@
 					<ion-text color="primary">{{o.created_at}}</ion-text>
 				</ion-item>
 				<ion-item>
-					<ion-label position="stacked">Respuesta:{{o.respuesta}}</ion-label>
-					<ion-textarea [autoGrow]="true" [ngModel]="o.respuesta"></ion-textarea>
+					<ion-label position="stacked">Documentaciòn:</ion-label>
+					<a color="success" target="_BLANK" [href]="'https://web.regionancash.gob.pe/fs/temp/'+o.documentacion">{{o.documentacion}}</a>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Respuesta:</ion-label>
+					<ion-textarea [autoGrow]="true" [(ngModel)]="o.respuesta"></ion-textarea>
 				</ion-item>
 			</ion-content>
 			<ion-footer>
