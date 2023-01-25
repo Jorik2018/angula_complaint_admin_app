@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
-	production: false,
 	title: 'Dv Environment Heading',
 	APP_OAUTH_CLIENT_ID:'OveCl8KbB1pBcy2huDQ15yYC',
 	API_KEY: '1234_API_KEY_5678',
