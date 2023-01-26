@@ -1,4 +1,4 @@
-import { Component, OnInit , ViewChild } from '@angular/core';
+import { Component, OnInit , ViewChild , HostListener , AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient , HttpHeaders } from '@angular/common/http';
 import { ColumnMode ,SelectionType } from '@swimlane/ngx-datatable';
@@ -25,7 +25,12 @@ export class FolderPage implements OnInit {
 	token:string='';
 	selected:any[] = [];
 	o:any={};
+	@ViewChild('header') 
+	header: any;//IonHeader;
 
+
+
+  
 	constructor(private http: HttpClient,private activatedRoute: ActivatedRoute,private loadingCtrl: LoadingController) {
 		var me=this;
 		me.columns = [
@@ -41,6 +46,25 @@ export class FolderPage implements OnInit {
 			me.token=(token_ as any)!.token as string;
 		}catch(e){}
 	}
+
+	@HostListener('window:resize', ['$event'])
+	onResize(event:any) {
+		this.ngAfterViewInit();
+	}
+
+	ngAfterViewInit() {
+		setTimeout(async ()=>{
+			let h:any=document.querySelector('ion-header'),c:any=(<HTMLElement>h!.nextSibling!).querySelector('Div');
+			if(c){
+				(c as HTMLElement).style!.height=(window.innerHeight-h.offsetHeight)+'px';
+				let tb:any=c.querySelector('ion-toolbar');
+				//tb.nextSibling.style.height=tb.offsetHeight+'px';
+				console.log(tb.offsetHeight);
+				console.log(tb.nextSibling.children[0].style.height=tb.offsetHeight+'px');
+			}
+		},1000);
+	}
+	
 
 	retrieve(){
 		let me=this, reqHeader = new HttpHeaders({ 

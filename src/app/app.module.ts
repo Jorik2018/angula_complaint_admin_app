@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule,IsAdmin } from './app-routing.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import {APP_BASE_HREF} from '@angular/common';
+import { environment } from '../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -19,4 +21,7 @@ import {APP_BASE_HREF} from '@angular/common';
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule {
+	
+	
+}

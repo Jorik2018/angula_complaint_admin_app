@@ -6,6 +6,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "apk": "cls && ionic build & npx cap copy && cd android && gradlew build && cd .. && start android/app/build/outputs/apk/release ",
+    
+    "apk_debug": "cls && cd android && gradlew assembleDebug && cd .. && start android/app/build/outputs/apk/release ",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -19,6 +22,7 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "@capacitor/android": "^4.6.2",
     "@capacitor/app": "4.1.1",
     "@capacitor/core": "4.6.2",
     "@capacitor/haptics": "4.1.0",

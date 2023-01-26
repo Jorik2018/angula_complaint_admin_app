@@ -1,10 +1,11 @@
 <ion-app>
+<ng-container *ngIf="checked">
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
           <ion-list-header>GOBIERNO REGIONAL DE ANCASH</ion-list-header>
-          <ion-note>{{userName}}</ion-note>
+          <ion-note>Usuario: {{userName}}</ion-note>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
@@ -24,4 +25,5 @@
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
+  </ng-container>
 </ion-app>

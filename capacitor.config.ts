@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'angular_complaint_admin_app',
+  appId: 'gob.regionancash.pe.denuncia',
+  appName: 'SISTEMA DE DENUNCIAS - GRA',
   webDir: 'www',
   bundledWebRuntime: false
 };
