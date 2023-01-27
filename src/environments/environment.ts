@@ -9,6 +9,7 @@ export const environment = {
 	APP_OAUTH_CLIENT_ID:'WLRqjxzEQ7Zd9D7jCwiYjs28',
 	API_KEY: '1234_API_KEY_5678',
 	APP_BASE_URL:'http://web.regionancash.gob.pe',
+	// APP_BASE_URL:'http://localhost:8000',
 	APP_OAUTH_URL:'http://web.regionancash.gob.pe/api/oauth'
    
 };

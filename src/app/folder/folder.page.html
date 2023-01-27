@@ -1,47 +1,42 @@
 <ion-header [translucent]="true" #header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
-  </ion-toolbar>
+	<ion-toolbar [ngStyle]="{textAlign: 'center'}">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-label [ngStyle]="{fontWeight: 'bold', textAlign: 'center', color:'#0f62ac'}">ADMINISTRACIÓN DE DENUNCIAS DE PRESUNTOS ACTOS DE CORRUPCIÓN</ion-label>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 	<ion-header collapse="condense">
-	<ion-toolbar>
-	<ion-title size="large">{{ folder }}</ion-title>
-	</ion-toolbar>
+		<ion-toolbar>
+			<ion-title size="large">{{ folder }}</ion-title>
+		</ion-toolbar>
 	</ion-header>
 
 	<div id="container">
 		<ion-toolbar>
-		<ion-buttons slot="end">
-		<ion-button  fill="solid"  [disabled]="!selected.length">
-		<ion-icon slot="start" name="trash"></ion-icon>
-		Eliminar
-		</ion-button>
-		<ion-button  fill="solid" (click)="atender(selected[0])" [disabled]="!selected.length">
-		<ion-icon slot="start" name="create"></ion-icon>
-		Atender
-		</ion-button>
-		</ion-buttons>
+			<ion-grid>
+				<ion-row class="ion-justify-content-end">
+					<ion-col size-md="2">
+						<ion-button [ngStyle]="{fontWeight: 'bold'}" color="danger" fill="solid" [disabled]="!selected.length">
+							<ion-icon slot="start" name="trash"></ion-icon>
+							Eliminar
+						</ion-button>
+					</ion-col>
+					<ion-col size-md="2">
+						<ion-button [ngStyle]="{fontWeight: 'bold'}" color="success" fill="solid" (click)="atender(selected[0])" [disabled]="!selected.length">
+							<ion-icon slot="start" name="create"></ion-icon>
+							Atender
+						</ion-button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
 		</ion-toolbar>
-		<ngx-datatable 
-			class="bootstrap fullscreen"
-			[limit]="8" 
-			[rows]="rows"
-			[columnMode]="columnMode"
-			[headerHeight]="50"
-			[footerHeight]="0"
-			[rowHeight]="50"
-			[scrollbarV]="true"
-			[scrollbarH]="true"
-			[selectionType]="selectionType"
-			[selected]="selected"
-			(activate)="onActivate($event)"
-			(select)="onSelect($event)"
-			>
+		<ngx-datatable style="background-color: #f0f0f0;border: 1px solid #000;margin: 5px;" class="bootstrap fullscreen" [limit]="8" [rows]="rows" [columnMode]="columnMode"
+			[headerHeight]="50" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true"
+			[selectionType]="selectionType" [selected]="selected" (activate)="onActivate($event)"
+			(select)="onSelect($event)">
 			<ngx-datatable-column name="Id" [ngStyle]="{textAlign:'center'}" [width]="60"></ngx-datatable-column>
 			<ngx-datatable-column name="Denunciado" prop="apenombresdenunciado" [width]="200"></ngx-datatable-column>
 			<ngx-datatable-column name="Descripcion" [width]="300"></ngx-datatable-column>
@@ -56,7 +51,7 @@
 				</ion-toolbar>
 			</ion-header>
 			<ion-content class="ion-padding">
-			
+
 				<ion-item>
 					<ion-label position="stacked">Denunciado:</ion-label>
 					<ion-text color="primary">{{o.apenombresdenunciado}}</ion-text>
@@ -71,7 +66,8 @@
 				</ion-item>
 				<ion-item>
 					<ion-label position="stacked">Documentaciòn:</ion-label>
-					<a color="success" target="_BLANK" [href]="'https://web.regionancash.gob.pe/fs/temp/'+o.documentacion">{{o.documentacion}}</a>
+					<a color="success" target="_BLANK"
+						[href]="'https://web.regionancash.gob.pe/fs/temp/'+o.documentacion">{{o.documentacion}}</a>
 				</ion-item>
 				<ion-item>
 					<ion-label position="stacked">Respuesta:</ion-label>
@@ -80,16 +76,27 @@
 			</ion-content>
 			<ion-footer>
 				<ion-toolbar>
-					<ion-buttons  slot="start">
-						<ion-button fill="solid" (click)="isModalOpen=false">Cancelar</ion-button>
-					</ion-buttons>
-					<ion-buttons  slot="end">
-						<ion-button fill="solid" (click)="send()" [strong]="true">
-						Confirmar
-						<ion-icon slot="end" name="send"></ion-icon>
-						</ion-button>
-					</ion-buttons>
-				</ion-toolbar> 
+					<ion-grid>
+						<ion-row class="ion-justify-content-center">
+							<ion-col size-md="3">
+								<ion-button [ngStyle]="{fontWeight: 'bold'}" color="danger"
+									(click)="isModalOpen=false">Cancelar
+									<ion-icon name="close-outline"></ion-icon>
+								</ion-button>
+							</ion-col>
+							<ion-col size-md="3">
+								<ion-button color="primary" (click)="send()" [strong]="true">
+									Confirmar
+									<ion-icon slot="end" name="send"></ion-icon>
+								</ion-button>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+					<!-- <ion-buttons  slot="start"> -->
+					<!-- </ion-buttons> -->
+					<!-- <ion-buttons  slot="end"> -->
+					<!-- </ion-buttons> -->
+				</ion-toolbar>
 			</ion-footer>
 		</ng-template>
 	</ion-modal>

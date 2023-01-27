@@ -1,29 +1,42 @@
 <ion-app>
-<ng-container *ngIf="checked">
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>GOBIERNO REGIONAL DE ANCASH</ion-list-header>
-          <ion-note>Usuario: {{userName}}</ion-note>
+  <ng-container *ngIf="checked">
+    <ion-split-pane contentId="main-content" color="danger">
+      <ion-menu contentId="main-content" type="overlay">
+        <ion-content>
+          <ion-list id="inbox-list" [ngStyle]="{borderRadius:'5px 5px 0 0'}">
+            <ion-list-header [ngStyle]="{textAlign:'center'}">GOBIERNO REGIONAL DE ANCASH</ion-list-header>
+            <ion-item-divider>
+              <ion-grid [ngStyle]="{marginTop : '15px'}">
+                <ion-row class="ion-justify-content-center">
+                  <ion-img [ngStyle]="{maxWidth:'250px', paddingBottom: '10px'}"
+                    src="http://siar.regionancash.gob.pe/sites/default/files/banners/logo_gore_azul_final.png"
+                    alt="Logo del GRA - Áncash"></ion-img>
+                </ion-row>
+              </ion-grid>
+            </ion-item-divider>
+            <br>
+            <br>
+            <ion-item-divider>
+              <ion-note [ngStyle]="{fontWeight: 'bold'}">Usuario: {{userName}}</ion-note>
+            </ion-item-divider>
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+                routerLinkActive="selected">
+                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+          <ion-list id="labels-list" [ngStyle]="{borderRadius:'0 0 5px 5px'}">
+            <ion-item lines="none" (click)="logout()">
+              <ion-icon slot="start" ios="log-out" md="log-out"></ion-icon>
+              <ion-label>Cerrar sesión</ion-label>
             </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-
-        <ion-list id="labels-list">
-          <ion-item  lines="none" (click)="logout()">
-            <ion-icon slot="start" ios="log-out" md="log-out"></ion-icon>
-            <ion-label>Cerrar sesión</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+      <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-split-pane>
   </ng-container>
 </ion-app>

@@ -1,5 +1,17 @@
 ion-menu ion-content {
-  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+  --ion-background-color: #0f62ac !important;
+  border: 2px solid #fff;
+}
+
+.color-gore {
+  --ion-background-color: #0f62ac !important;
+  border: 2px solid #fff;
+}
+
+ion-menu ion-content ion-list {
+  --ion-background-color: #fff !important;
+  border: 2px solid #fff;
+  // border-radius: 0 0 5px 5px;
 }
 
 ion-menu.md ion-content {
