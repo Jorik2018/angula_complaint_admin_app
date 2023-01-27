@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "apk": "cls && ionic build & npx cap copy && cd android && gradlew build && cd .. && start android/app/build/outputs/apk/release ",
+    "apk": "cls && ng build --configuration=app & npx cap copy && cd android && gradlew bundle && cd .. && start android/app/build/outputs/apk/release ",
     
     "apk_debug": "cls && cd android && gradlew assembleDebug && cd .. && start android/app/build/outputs/apk/release ",
     "build": "ng build",
